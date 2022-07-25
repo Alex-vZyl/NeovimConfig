@@ -402,7 +402,7 @@ nnoremap <silent> <C-t> <Cmd>Telescope oldfiles<CR>
 nnoremap <silent> <F12> <Cmd>Cheatsheet<CR>
 
 " Sessions.
-nnoremap <silent> <F5> <Cmd>SaveSession<CR> <Cmd>lua vim.notify("Successfully saved current session.", "success", { title = "Sessions"} )<CR>
+nnoremap <silent> <F5> <Cmd>SaveSession<CR> <Cmd>lua vim.notify(" Saved current session.", "success", { render = "minimal"} )<CR>
 
 " Moving windows.
 nnoremap <silent> <C-h> <Cmd>wincmd h<CR>
@@ -431,7 +431,9 @@ tnoremap <silent> <Esc> <C-\><C-n>
 nnoremap <silent> <C-/> <Cmd>Commentary<CR>
 
 " Saving.
-nnoremap <silent> <C-s> <Cmd>w!<CR>
+nnoremap <silent> <C-s> <Cmd>w!<CR> <Cmd>lua vim.notify(" Saved to \"" .. vim.fn.expand('%') .. "\".", "success", { render = "minimal"} )<CR>
+vnoremap <silent> <C-s> <Cmd>w!<CR> <Cmd>lua vim.notify(" Saved to \"" .. vim.fn.expand('%') .. "\".", "success", { render = "minimal"} )<CR>
+inoremap <silent> <C-s> <Cmd>w!<CR> <Cmd>lua vim.notify(" Saved to \"" .. vim.fn.expand('%') .. "\".", "success", { render = "minimal"} )<CR>
 
 " Buffers.
 nnoremap <silent> <C-TAB> <Cmd>Telescope buffers<CR>
@@ -441,6 +443,14 @@ vnoremap <silent> <C-TAB> <Cmd>Telescope buffers<CR>
 
 " Finding.
 nnoremap <silent> <C-f> <Cmd>Telescope current_buffer_fuzzy_find previewer=false<CR>
+inoremap <silent> <C-f> <Cmd>Telescope current_buffer_fuzzy_find previewer=false<CR>
+vnoremap <silent> <C-f> <Cmd>Telescope current_buffer_fuzzy_find previewer=false<CR>
+
+" Redo and undo.
+nnoremap <silent> U     <Cmd><CR>
+nnoremap <silent> <C-Z> <Cmd>undo<CR>
+inoremap <silent> <C-Z> <Cmd>undo<CR>
+vnoremap <silent> <C-Z> <Cmd>undo<CR>
 
 " -------------------------
 " RUST PLUGIN CONFIGURARION
@@ -581,8 +591,8 @@ omap ac <Plug>(coc-classobj-a)
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocActionAsync('format')
@@ -598,24 +608,6 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " provide custom statusline: lightline.vim, vim-airline.
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
 "------"
 " MISC "
 "------"
@@ -623,5 +615,3 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 " Ensure cmd is not larger than it needs to be.
 :set cmdheight =1
-
-
