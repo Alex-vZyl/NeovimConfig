@@ -325,7 +325,7 @@ let g:everforest_background = 'hard'
 :let g:scrollview_excluded_filetypes = ['nerdtree', 'NvimTree']
 
 " Font.
-set guifont=DejaVuSansMono\ Nerd\ Font:h11
+set guifont=JetBrainsMono\ Nerd\ Font:h11
 
 " Explicitly enable efm langserver.
 let g:lsp_settings = {
