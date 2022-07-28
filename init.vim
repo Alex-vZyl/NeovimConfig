@@ -402,7 +402,7 @@ nnoremap <silent> <C-t> <Cmd>Telescope oldfiles<CR>
 nnoremap <silent> <F12> <Cmd>Cheatsheet<CR>
 
 " Sessions.
-nnoremap <silent> <F5> <Cmd>SaveSession<CR> <Cmd>lua vim.notify(" Saved current session.", "success", { render = "minimal"} )<CR>
+nnoremap <silent> <F5> <Cmd>SaveSession<CR> <Cmd>lua vim.notify(" Saved current session.", "success", { title = " Session"} )<CR>
 
 " Moving windows.
 nnoremap <silent> <C-h> <Cmd>wincmd h<CR>
